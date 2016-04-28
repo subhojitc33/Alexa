@@ -25,3 +25,9 @@ exports.Search = () => {
     console.log(alexa.slots);
     return "OK, looking in " + alexa.slots.City.value;
 }
+
+
+exports.Changes = () => {
+    console.log(alexa.slots);
+    return "OK, looking in " + alexa.slots.City.value;
+}

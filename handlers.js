@@ -17,3 +17,8 @@ exports.UpdateIntent = function () {
     count++;
     return text;
 };
+
+exports.Search = () => {
+    console.log(alexa.slots);
+    return {text: "OK, looking in " + alexa.slots.City.value, endSession: true};
+}

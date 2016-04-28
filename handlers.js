@@ -1,5 +1,8 @@
 "use strict";
 
+let alexa = require('alexa-nodekit');
+
+
 var count = 1;
 
 exports.UpdateIntent = function () {

@@ -30,7 +30,7 @@ app.post('/dreamhouse', (req, res) => {
     } else if (req.body.request.type === 'IntentRequest') {
 
         let intent = req.body.request.intent.name;
-        let handler = handlers[alexa.intentName];
+        let handler = handlers[intent];
         let text = handler ? handler() : "I don't know what you said";
 
         return res.json({

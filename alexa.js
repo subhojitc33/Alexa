@@ -1,6 +1,6 @@
 "use strict";
 
-exports = (req, res) => {
+module.exports = (req, res) => {
 
     let session = req.body.session;
     session.attributes = session.attributes || {};

@@ -41,7 +41,11 @@ app.post('/dreamhouse', (req, res) => {
         //let session = req.body.session;
         //session.attributes = session.attributes || {};
 
-        let text = handler ? handler(alx.slots, alx.session, alx.response) : "I don't know what you said";
+        if (handler) {
+            handler(alx.slots, alx.session, alx.response);
+        } else {
+            alx.response.say("I don't know what you said");
+        }
 
         //wrapper.say(text)
 

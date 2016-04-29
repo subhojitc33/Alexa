@@ -30,7 +30,7 @@ module.exports = (req, res) => {
                         outputSpeech: {
                             //type: 'PlainText',
                             type: 'SSML',
-                            text: text
+                            ssml: text
                         },
                         shouldEndSession: true
                     }

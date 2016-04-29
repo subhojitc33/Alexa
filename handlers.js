@@ -40,10 +40,6 @@ exports.AnswerNumber = (slots, session, response) => {
                 console.error(err);
                 response.say("Oops. Something went wrong");
             });
-
-
-
-        response.say(
     } else {
         response.say("Sorry, I didn't understand that");
     }

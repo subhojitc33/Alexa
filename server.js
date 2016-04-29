@@ -35,7 +35,7 @@ app.post('/dreamhouse', (req, res) => {
 
         return res.json({
             //version: this.version,
-            sessionAttributes: {},
+            sessionAttributes: session.attributes,
             response: {
                 outputSpeech: {
                     type: 'PlainText',
@@ -47,7 +47,7 @@ app.post('/dreamhouse', (req, res) => {
                     subtitle: "subtitle",
                     content: "content"
                 },
-                shouldEndSession: true
+                shouldEndSession: false
             }
         });
     }

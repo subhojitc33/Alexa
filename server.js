@@ -11,7 +11,11 @@ app.use(bodyParser.json());
 
 app.post('/dreamhouse', (req, res) => {
 
-    if (req.body.request.type === 'LaunchRequest') {
+    //let wrapper = alexa.wrap(req, res);
+
+    let {type, intent, slots, session, response} = alexa(req, res);
+
+    if (type === 'LaunchRequest') {
         //alexa.launchRequest(req.body);
         //// TODO For now, we don't care about the session or the user id, we will refactor this later.
         //let sessionId = alexa.sessionId;
@@ -27,33 +31,36 @@ app.post('/dreamhouse', (req, res) => {
         //    }
         //    return res.jsonp(response);
         //});
-    } else if (req.body.request.type === 'IntentRequest') {
+    } else if (type === 'IntentRequest') {
 
         //console.log(req);
-        let intent = req.body.request.intent.name;
+        //let intent = req.body.request.intent.name;
         let handler = handlers[intent];
-        let session = req.body.session;
-        session.attributes = session.attributes || {};
 
-        let text = handler ? handler(req.body.request.intent.slots, session) : "I don't know what you said";
+        //let session = req.body.session;
+        //session.attributes = session.attributes || {};
 
-        return res.json({
-            version: req.version,
-            sessionAttributes: session.attributes,
-            response: {
-                outputSpeech: {
-                    type: 'PlainText',
-                    text: text
-                },
-                card: {
-                    type: 'Simple',
-                    title: "title",
-                    subtitle: "subtitle",
-                    content: "content"
-                },
-                shouldEndSession: false
-            }
-        });
+        let text = handler ? handler(slots, session, response) : "I don't know what you said";
+
+        //wrapper.say(text)
+
+        //return res.json({
+        //    version: req.version,
+        //    sessionAttributes: session.attributes,
+        //    response: {
+        //        outputSpeech: {
+        //            type: 'PlainText',
+        //            text: text
+        //        },
+        //        card: {
+        //            type: 'Simple',
+        //            title: "title",
+        //            subtitle: "subtitle",
+        //            content: "content"
+        //        },
+        //        shouldEndSession: false
+        //    }
+        //});
     }
 
 

@@ -31,7 +31,7 @@ exports.Search = (slots, session) => {
         session.attributes.counter = 1;
     }
     console.log(session.attributes.counter);
-    return "OK, looking in " + slots.City.value + " " + session.attributes.counter;
+    response.say("OK, looking in " + slots.City.value + " " + session.attributes.counter);
 }
 
 

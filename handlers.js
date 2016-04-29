@@ -38,7 +38,7 @@ exports.Changes = (slots, session, response) => {
                     let property = priceChange.get("Parent");
                     text += `${property.Address__c}, ${property.City__c}.
                             Price changed from $${priceChange.get("OldValue")} to $${priceChange.get("NewValue")}.
-                             . . . . />`;
+                             . . . . . . .`;
                 }
             );
            response.say(text);

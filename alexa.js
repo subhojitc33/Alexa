@@ -1,3 +1,5 @@
+"use strict";
+
 exports = (req, res) => {
 
     let session = req.body.session;

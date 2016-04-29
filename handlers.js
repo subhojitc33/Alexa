@@ -1,5 +1,7 @@
 "use strict";
 
+let salesforce = require("./salesforce");
+
 exports.SearchHouses = (slots, session, response) => {
     session.attributes.stage = "ask_city";
     response.ask("OK, in what city?");
@@ -29,5 +31,13 @@ exports.AnswerNumber = (slots, session, response) => {
 };
 
 exports.Changes = (slots, session, response) => {
-    response.say("OK, here are the recent changes in " + slots.City.value);
+    salesforce.findPriceChanges().then(priceChanges => {
+        let text = "OK, here are the recent price changes: ";
+        priceChanges.forEach(priceChange => {
+                let property = priceChange.get("Parent");
+                text += `${property.Address__c}, ${property.City__c} ${property.State__c}. Price changed from $${priceChange.get("OldValue")} to $${priceChange.get("NewValue")}.`;
+            }
+        );
+       response.say(text);
+    });
 };

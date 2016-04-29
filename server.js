@@ -2,7 +2,6 @@
 
 let express = require('express'),
     bodyParser = require('body-parser'),
-    alexa = require('./alexa'),
     handlers = require('./handlers'),
     app = express();
 
@@ -11,9 +10,6 @@ app.use(bodyParser.json());
 
 app.post('/dreamhouse', (req, res) => {
 
-    //let wrapper = alexa.wrap(req, res);
-
-    //let {type, intent, slots, session, response} = alexa(req, res);
     let alx = alexa(req, res),
         type = alx.type,
         intent = alx.intent,
@@ -21,23 +17,7 @@ app.post('/dreamhouse', (req, res) => {
         session = alx.session,
         response = alx.response;
 
-
     if (type === 'LaunchRequest') {
-        //alexa.launchRequest(req.body);
-        //// TODO For now, we don't care about the session or the user id, we will refactor this later.
-        //let sessionId = alexa.sessionId;
-        //let userId = alexa.userId;
-        //let text = "Welcome to DreamHouse"
-        //alexa.response(text, {
-        //    title: 'DreamHouse',
-        //    subtitle: 'Welcome to Dreamhouse',
-        //    content: 'Some commands are "Ask DreamHouse for an update"'
-        //}, false, function (error, response) {
-        //    if (error) {
-        //        return res.status(500).jsonp({message: error});
-        //    }
-        //    return res.jsonp(response);
-        //});
         response.say("Welcome to Dreamhouse");
     } else if (type === 'IntentRequest') {
         let handler = handlers[intent];

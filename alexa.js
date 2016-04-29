@@ -2,9 +2,6 @@
 
 module.exports = (req, res) => {
 
-    console.log('--------------------');
-    console.log(req.body);
-
     let session = req.body.session,
         intent,
         slots;

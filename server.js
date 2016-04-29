@@ -2,7 +2,7 @@
 
 let express = require('express'),
     bodyParser = require('body-parser'),
-    alexa = require('alexa-nodekit'),
+    alexa = require('./alexa'),
     handlers = require('./handlers'),
     app = express();
 

@@ -14,7 +14,7 @@ module.exports = (req, res) => {
 
     let say = (text, shouldEndSession) => {
 
-        let outputSpeech;
+        let outputSpeech = {};
 
         if (text.indexOf("/>") > 0 || text.indexOf("</")) {
             outputSpeech.type = 'SSML';

@@ -10,6 +10,8 @@ exports.AnswerCity = (slots, session, response) => {
         session.attributes.city = slots.City.value;
         session.attributes.stage = "ask_bedrooms";
         response.ask("How many bedrooms?");
+    } else {
+        response.say("Sorry, I didn't understand that");
     }
 };
 
@@ -20,7 +22,9 @@ exports.AnswerNumber = (slots, session, response) => {
         response.ask("Around what price?");
     } else if (session.attributes.stage === "ask_price") {
         session.attributes.price = slots.NumericAnswer.value;
-        response.say(`OK, here is what I found in ${session.attributes.city} around ${session.attributes.price}`);
+        response.say(`OK, here is what I found for ${session.attributes.bedrooms} bedrooms in ${session.attributes.city} around ${session.attributes.price}`);
+    } else {
+        response.say("Sorry, I didn't understand that");
     }
 };
 

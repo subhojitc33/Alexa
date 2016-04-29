@@ -22,21 +22,21 @@ exports.UpdateIntent = function () {
 
 
 
-exports.Search = (slots, session, response) => {
-    console.log("Search");
-    console.log(slots);
-    console.log(session.attributes.counter);
-    if (slots.
-    if (session.attributes.counter)
-    {
-        console.log("incrementing");
-        session.attributes.counter = session.attributes.counter + 1;
-    } else {
-        session.attributes.counter = 1;
-    }
-    console.log(session.attributes.counter);
-    response.say("OK, looking in " + slots.City.value + " " + session.attributes.counter);
-};
+//exports.Search = (slots, session, response) => {
+//    console.log("Search");
+//    console.log(slots);
+//    console.log(session.attributes.counter);
+//    if (slots.
+//    if (session.attributes.counter)
+//    {
+//        console.log("incrementing");
+//        session.attributes.counter = session.attributes.counter + 1;
+//    } else {
+//        session.attributes.counter = 1;
+//    }
+//    console.log(session.attributes.counter);
+//    response.say("OK, looking in " + slots.City.value + " " + session.attributes.counter);
+//};
 
 exports.SearchHouses = (slots, session, response) => {
     console.log("SearchHouses");

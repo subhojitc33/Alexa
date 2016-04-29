@@ -36,7 +36,7 @@ exports.AnswerNumber = (slots, session, response) => {
                     });
                     response.say(text);
                 } else {
-                    let text = `Sorry I didn't find any ${session.attributes.bedrooms} bedrooms in ${session.attributes.city} around ${price}: `;
+                    response.say(`Sorry I didn't find any ${session.attributes.bedrooms} bedrooms in ${session.attributes.city} around ${price}: `);
                 }
             })
             .catch((err) => {

@@ -23,7 +23,13 @@ exports.UpdateIntent = function () {
 exports.Search = (slots, session) => {
     console.log(slots);
     console.log(session.attributes.counter);
-    session.attributes.counter = session.attributes.counter ? session.attributes.counter++ : 1;
+    if (session.attributes.counter)
+    {
+        console.log("incrementing");
+        session.attributes.counter = session.attributes.counter++;
+    } else {
+        session.attributes.counter = 1;
+    }
     console.log(session.attributes.counter);
     return "OK, looking in " + slots.City.value + " " + session.attributes.counter;
 }

@@ -9,9 +9,9 @@ module.exports = (req, res) => {
 
         type: req.body.request.type,
 
-        intent: req.body.request.intent.name,
+        intent: req.body.request.intent ? req.body.request.intent.name : undefined,
 
-        slots: req.body.request.intent.slots,
+        slots: req.body.request.intent ? req.body.request.intent.slots : undefined,
 
         session: session,
 

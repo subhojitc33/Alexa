@@ -38,6 +38,7 @@ app.post('/dreamhouse', (req, res) => {
         //    }
         //    return res.jsonp(response);
         //});
+        response.say("Welcome to Dreamhouse");
     } else if (type === 'IntentRequest') {
         let handler = handlers[intent];
         if (handler) {
@@ -45,6 +46,8 @@ app.post('/dreamhouse', (req, res) => {
         } else {
             response.say("I don't know how to answer that");
         }
+    } else {
+        response.say("Not sure what you mean");
     }
 
 });

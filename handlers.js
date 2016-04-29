@@ -26,7 +26,7 @@ exports.Search = (slots, session) => {
     if (session.attributes.counter)
     {
         console.log("incrementing");
-        session.attributes.counter = session.attributes.counter++;
+        session.attributes.counter = session.attributes.counter + 1;
     } else {
         session.attributes.counter = 1;
     }

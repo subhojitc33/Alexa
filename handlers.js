@@ -23,8 +23,27 @@ exports.AnswerNumber = (slots, session, response) => {
         session.attributes.stage = "ask_price";
         response.ask("Around what price?");
     } else if (session.attributes.stage === "ask_price") {
-        session.attributes.price = slots.NumericAnswer.value;
-        response.say(`OK, here is what I found for ${session.attributes.bedrooms} bedrooms in ${session.attributes.city} around ${session.attributes.price}`);
+        let price = slots.NumericAnswer.value;
+        session.attributes.price = price;
+        let min = price * 0.8;
+        let max = price * 1.2;
+
+        salesforce.findProperties({city: session.attributes.city, bedrooms: session.attributes.city, min: min, max: max})
+            .then(properties => {
+                let text = `OK, here is what I found for ${session.attributes.bedrooms} bedrooms in ${session.attributes.city} around ${price}: `;
+                properties.forEach(property => {
+                    text += `${property.get("Address__c")}, ${property.get("City__c")}: ${property.get("Price__c")}. `;
+                });
+                response.say(text);
+            })
+            .catch((err) => {
+                console.error(err);
+                response.say("Oops. Something went wrong");
+            });
+
+
+
+        response.say(
     } else {
         response.say("Sorry, I didn't understand that");
     }
@@ -37,13 +56,13 @@ exports.Changes = (slots, session, response) => {
             priceChanges.forEach(priceChange => {
                     let property = priceChange.get("Parent");
                     text += `${property.Address__c}, ${property.City__c}.
-                            Price changed from $${priceChange.get("OldValue")} to $${priceChange.get("NewValue")}. . . . . . . . . . . `;
+                            Price changed from $${priceChange.get("OldValue")} to $${priceChange.get("NewValue")}.`;
                 }
             );
            response.say(text);
         })
         .catch((err) => {
-            console.log(err);
+            console.error(err);
             response.say("Oops. Something went wrong");
         });
 };

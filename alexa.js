@@ -5,16 +5,23 @@ module.exports = (req, res) => {
     console.log('--------------------');
     console.log(req.body);
 
-    let session = req.body.session;
+    let session = req.body.session,
+        intent,
+        slots;
     session.attributes = session.attributes || {};
+
+    if (req.body.request.intent) {
+        intent = req.body.request.intent.name;
+        slots = req.body.request.intent.slots;
+    }
 
     return {
 
         type: req.body.request.type,
 
-        intent: req.body.request.intent.name,
+        intent: intent,
 
-        slots: req.body.request.intent.slots,
+        slots: slots,
 
         session: session,
 

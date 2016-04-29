@@ -31,6 +31,9 @@ app.post('/dreamhouse', (req, res) => {
 
         let intent = req.body.request.intent.name;
         let handler = handlers[intent];
+        let session = req.session || {};
+        session.attributes = session.attributes || {};
+
         let text = handler ? handler(req.body.request.intent.slots, req.session) : "I don't know what you said";
 
         return res.json({

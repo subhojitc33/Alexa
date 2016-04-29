@@ -14,9 +14,15 @@ app.post('/dreamhouse', (req, res) => {
     //let wrapper = alexa.wrap(req, res);
 
     //let {type, intent, slots, session, response} = alexa(req, res);
-    let alx = alexa(req, res);
+    let alx = alexa(req, res),
+        type = alx.type,
+        intent = alx.intent,
+        slots = alx.slots,
+        session = alx.session,
+        response = alx.response;
 
-    if (alx.type === 'LaunchRequest') {
+
+    if (type === 'LaunchRequest') {
         //alexa.launchRequest(req.body);
         //// TODO For now, we don't care about the session or the user id, we will refactor this later.
         //let sessionId = alexa.sessionId;
@@ -32,43 +38,14 @@ app.post('/dreamhouse', (req, res) => {
         //    }
         //    return res.jsonp(response);
         //});
-    } else if (alx.type === 'IntentRequest') {
-
-        //console.log(req);
-        //let intent = req.body.request.intent.name;
-        let handler = handlers[alx.intent];
-
-        //let session = req.body.session;
-        //session.attributes = session.attributes || {};
-
+    } else if (type === 'IntentRequest') {
+        let handler = handlers[intent];
         if (handler) {
-            handler(alx.slots, alx.session, alx.response);
+            handler(slots, session, response);
         } else {
-            alx.response.say("I don't know what you said");
+            response.say("I don't know how to answer that");
         }
-
-        //wrapper.say(text)
-
-        //return res.json({
-        //    version: req.version,
-        //    sessionAttributes: session.attributes,
-        //    response: {
-        //        outputSpeech: {
-        //            type: 'PlainText',
-        //            text: text
-        //        },
-        //        card: {
-        //            type: 'Simple',
-        //            title: "title",
-        //            subtitle: "subtitle",
-        //            content: "content"
-        //        },
-        //        shouldEndSession: false
-        //    }
-        //});
     }
-
-
 
 });
 

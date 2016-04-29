@@ -20,10 +20,13 @@ exports.UpdateIntent = function () {
     return text;
 };
 
+
+
 exports.Search = (slots, session, response) => {
     console.log("Search");
     console.log(slots);
     console.log(session.attributes.counter);
+    if (slots.
     if (session.attributes.counter)
     {
         console.log("incrementing");
@@ -34,6 +37,37 @@ exports.Search = (slots, session, response) => {
     console.log(session.attributes.counter);
     response.say("OK, looking in " + slots.City.value + " " + session.attributes.counter);
 };
+
+exports.SearchHouses = (slots, session, response) => {
+    console.log("SearchHouses");
+    session.attributes.stage = "ask_city";
+    response.ask("OK, in what city?");
+};
+
+exports.AnswerCity = (slots, session, response) => {
+    console.log("AnswerCity");
+    console.log(slots);
+    console.log(session.attributes);
+    if (session.attributes.stage === "ask_city") {
+        session.attributes.city = slots.City.value;
+        session.attributes.stage = "ask_bedrooms";
+        response.ask("How many bedrooms?");
+    }
+};
+
+exports.AnswerPriceRange = (slots, session, response) => {
+    console.log("AnswerPriceRange");
+    console.log(slots);
+    console.log(session.attributes);
+    if (session.attributes.stage === "ask_price_range") {
+        session.attributes.min = slots.min.value;
+        session.attributes.max = slots.max.value;
+        response.say(`OK, looking in ${session.attributes.city} between ${session.attributes.min} and ${session.attributes.max}`);
+    }
+
+};
+
+
 
 
 exports.Changes = () => {

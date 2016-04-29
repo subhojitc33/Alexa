@@ -31,13 +31,18 @@ exports.AnswerNumber = (slots, session, response) => {
 };
 
 exports.Changes = (slots, session, response) => {
-    salesforce.findPriceChanges().then(priceChanges => {
-        let text = "OK, here are the recent price changes: ";
-        priceChanges.forEach(priceChange => {
-                let property = priceChange.get("Parent");
-                text += `${property.Address__c}, ${property.City__c} ${property.State__c}. Price changed from $${priceChange.get("OldValue")} to $${priceChange.get("NewValue")}.`;
-            }
-        );
-       response.say(text);
-    });
+    salesforce.findPriceChanges()
+        .then(priceChanges => {
+            let text = "OK, here are the recent price changes: ";
+            priceChanges.forEach(priceChange => {
+                    let property = priceChange.get("Parent");
+                    text += `${property.Address__c}, ${property.City__c} ${property.State__c}. Price changed from $${priceChange.get("OldValue")} to $${priceChange.get("NewValue")}.`;
+                }
+            );
+           response.say(text);
+        })
+        .catch((err) => {
+            console.log(err);
+            response.say("Oops. Something went wrong");
+        });
 };

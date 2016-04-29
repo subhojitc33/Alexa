@@ -27,14 +27,17 @@ exports.AnswerNumber = (slots, session, response) => {
         session.attributes.price = price;
         let priceMin = price * 0.8;
         let priceMax = price * 1.2;
-
         salesforce.findProperties({city: session.attributes.city, bedrooms: session.attributes.bedrooms, priceMin: priceMin, priceMax: priceMax})
             .then(properties => {
-                let text = `OK, here is what I found for ${session.attributes.bedrooms} bedrooms in ${session.attributes.city} around ${price}: `;
-                properties.forEach(property => {
-                    text += `${property.get("Address__c")}, ${property.get("City__c")}: ${property.get("Price__c")}. `;
-                });
-                response.say(text);
+                if (properties && properties.length>0) {
+                    let text = `OK, here is what I found for ${session.attributes.bedrooms} bedrooms in ${session.attributes.city} around $${price}: `;
+                    properties.forEach(property => {
+                        text += `${property.get("Address__c")}, ${property.get("City__c")}: $${property.get("Price__c")}. `;
+                    });
+                    response.say(text);
+                } else {
+                    let text = `Sorry I didn't find any ${session.attributes.bedrooms} bedrooms in ${session.attributes.city} around ${price}: `;
+                }
             })
             .catch((err) => {
                 console.error(err);

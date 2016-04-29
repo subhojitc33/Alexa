@@ -2,7 +2,6 @@
 
 let alexa = require('alexa-nodekit');
 
-
 var count = 1;
 
 exports.UpdateIntent = function () {
@@ -23,7 +22,9 @@ exports.UpdateIntent = function () {
 
 exports.Search = (slots, session) => {
     console.log(slots);
+    console.log(session.attributes.counter);
     session.attributes.counter = session.attributes.counter ? session.attributes.counter++ : 1;
+    console.log(session.attributes.counter);
     return "OK, looking in " + slots.City.value + " " + session.attributes.counter;
 }
 

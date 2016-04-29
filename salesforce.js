@@ -54,7 +54,7 @@ let findProperties = (params) => {
                 LIMIT 5`;
         org.query({query: q}, (err, resp) => {
             if (err) {
-                reject("An error as occurred");
+                reject(err);
             } else {
                 resolve(resp.records);
             }

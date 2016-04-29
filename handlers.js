@@ -21,13 +21,13 @@ exports.UpdateIntent = function () {
     return text;
 };
 
-exports.Search = () => {
-    console.log(alexa.slots);
-    return "OK, looking in " + alexa.slots.City.value;
+exports.Search = (slots, session) => {
+    console.log(slots);
+    return "OK, looking in " + slots.City.value;
 }
 
 
 exports.Changes = () => {
     console.log(alexa.slots);
-    return "OK, looking in " + alexa.slots.City.value;
+    return "OK, looking in " + slots.City.value;
 }

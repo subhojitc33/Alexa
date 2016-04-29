@@ -32,7 +32,7 @@ exports.Search = (slots, session, response) => {
     }
     console.log(session.attributes.counter);
     response.say("OK, looking in " + slots.City.value + " " + session.attributes.counter);
-}
+};
 
 
 exports.Changes = () => {

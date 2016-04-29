@@ -20,7 +20,7 @@ exports.UpdateIntent = function () {
     return text;
 };
 
-exports.Search = (slots, session) => {
+exports.Search = (slots, session, response) => {
     console.log(slots);
     console.log(session.attributes.counter);
     if (session.attributes.counter)

@@ -13,9 +13,10 @@ app.post('/dreamhouse', (req, res) => {
 
     //let wrapper = alexa.wrap(req, res);
 
-    let {type, intent, slots, session, response} = alexa(req, res);
+    //let {type, intent, slots, session, response} = alexa(req, res);
+    let alx = alexa(req, res);
 
-    if (type === 'LaunchRequest') {
+    if (alx.type === 'LaunchRequest') {
         //alexa.launchRequest(req.body);
         //// TODO For now, we don't care about the session or the user id, we will refactor this later.
         //let sessionId = alexa.sessionId;
@@ -31,7 +32,7 @@ app.post('/dreamhouse', (req, res) => {
         //    }
         //    return res.jsonp(response);
         //});
-    } else if (type === 'IntentRequest') {
+    } else if (alx.type === 'IntentRequest') {
 
         //console.log(req);
         //let intent = req.body.request.intent.name;
@@ -40,7 +41,7 @@ app.post('/dreamhouse', (req, res) => {
         //let session = req.body.session;
         //session.attributes = session.attributes || {};
 
-        let text = handler ? handler(slots, session, response) : "I don't know what you said";
+        let text = handler ? handler(alx.slots, alx.session, alx.response) : "I don't know what you said";
 
         //wrapper.say(text)
 

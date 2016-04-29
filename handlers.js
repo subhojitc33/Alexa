@@ -50,8 +50,8 @@ exports.AnswerCity = (slots, session, response) => {
     console.log(session.attributes);
     if (session.attributes.stage === "ask_city") {
         session.attributes.city = slots.City.value;
-        session.attributes.stage = "ask_bedrooms";
-        response.ask("How many bedrooms?");
+        session.attributes.stage = "ask_price_range";
+        response.ask("What price range?");
     }
 };
 

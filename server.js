@@ -29,6 +29,7 @@ app.post('/dreamhouse', (req, res) => {
         //});
     } else if (req.body.request.type === 'IntentRequest') {
 
+        console.log(req);
         let intent = req.body.request.intent.name;
         let handler = handlers[intent];
         let session = req.session;

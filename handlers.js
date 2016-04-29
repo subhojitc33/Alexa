@@ -32,11 +32,11 @@ exports.AnswerNumber = (slots, session, response) => {
                 if (properties && properties.length>0) {
                     let text = `OK, here is what I found for ${session.attributes.bedrooms} bedrooms in ${session.attributes.city} around $${price}: `;
                     properties.forEach(property => {
-                        text += `${property.get("Address__c")}, ${property.get("City__c")}: $${property.get("Price__c")}. `;
+                        text += `${property.get("Address__c")}, ${property.get("City__c")}: $${property.get("Price__c")}. <break time="0.3s" /> `;
                     });
                     response.say(text);
                 } else {
-                    response.say(`Sorry I didn't find any ${session.attributes.bedrooms} bedrooms in ${session.attributes.city} around ${price}: `);
+                    response.say(`Sorry, I didn't find any ${session.attributes.bedrooms} bedrooms in ${session.attributes.city} around ${price}: `);
                 }
             })
             .catch((err) => {

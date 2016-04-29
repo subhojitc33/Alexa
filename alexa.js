@@ -28,7 +28,8 @@ module.exports = (req, res) => {
                     version: req.version,
                     response: {
                         outputSpeech: {
-                            type: 'PlainText',
+                            //type: 'PlainText',
+                            type: 'SSML',
                             text: text
                         },
                         shouldEndSession: true

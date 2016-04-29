@@ -12,6 +12,28 @@ module.exports = (req, res) => {
         slots = req.body.request.intent.slots;
     }
 
+    let say = (text, shouldEndSession) => {
+
+        let outputSpeech;
+
+        if (text.indexOf("/>") > 0 || text.indexOf("</")) {
+            outputSpeech.type = 'SSML';
+            outputSpeech.ssml = "<speak>" + text + "</speak>";
+        } else {
+            outputSpeech.type = 'PlainText';
+            outputSpeech.text = text;
+        }
+
+        res.json({
+            version: req.version,
+            response: {
+                outputSpeech: outputSpeech,
+                shouldEndSession: shouldEndSession
+            }
+        });
+
+    };
+
     return {
 
         type: req.body.request.type,
@@ -23,33 +45,8 @@ module.exports = (req, res) => {
         session: session,
 
         response: {
-            say: text => {
-                res.json({
-                    version: req.version,
-                    response: {
-                        outputSpeech: {
-                            //type: 'PlainText',
-                            type: 'SSML',
-                            ssml: text
-                        },
-                        shouldEndSession: true
-                    }
-                });
-            },
-
-            ask: (text) => {
-                res.json({
-                    version: req.version,
-                    sessionAttributes: session.attributes,
-                    response: {
-                        outputSpeech: {
-                            type: 'PlainText',
-                            text: text
-                        },
-                        shouldEndSession: false
-                    }
-                });
-            }
+            say: text => say(text, true),
+            ask: text => say(text, false)
         }
 
     };

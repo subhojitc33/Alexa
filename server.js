@@ -36,7 +36,7 @@ app.post('/dreamhouse', (req, res) => {
 
         //console.log(req);
         //let intent = req.body.request.intent.name;
-        let handler = handlers[intent];
+        let handler = handlers[alx.intent];
 
         //let session = req.body.session;
         //session.attributes = session.attributes || {};

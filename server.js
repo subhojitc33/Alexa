@@ -2,14 +2,13 @@
 
 let express = require('express'),
     bodyParser = require('body-parser'),
-    alexa = require('./alexa'),
     handlers = require('./handlers'),
     app = express();
 
 app.set('port', (process.env.PORT || 5000));
 app.use(bodyParser.json());
 
-app.post('/', (req, res) => {
+app.post('/dreamhouse', (req, res) => {
 
     let alx = alexa(req, res),
         type = alx.type,
@@ -19,7 +18,7 @@ app.post('/', (req, res) => {
         response = alx.response;
 
     if (type === 'LaunchRequest') {
-        handlers.StartGame(slots, session, response);
+        response.say("Welcome to Dreamhouse");
     } else if (type === 'IntentRequest') {
         let handler = handlers[intent];
         if (handler) {
@@ -34,5 +33,5 @@ app.post('/', (req, res) => {
 });
 
 app.listen(app.get('port'), function() {
-    console.log("Alexa server listening on port " + app.get('port'));
+    console.log("Dreamhouse Alexa server listening on port " + app.get('port'));
 });

@@ -54,10 +54,9 @@ exports.Changes = (slots, session, response) => {
             let text = "OK, here are the recent price changes: ";
             priceChanges.forEach(priceChange => {
                     let property = priceChange.get("Parent");
-                    text += `${property.Address__c}, ${property.City__c}.<break time="0.3s" />
-                            Price changed from $${priceChange.get("OldValue")} to $${priceChange.get("NewValue")}.<break time="0.5s" />`;
-                }
-            );
+                    text += `${property.Address__c}, ${property.City__c}.<break time="0.2s"/>
+                            Price changed from $${priceChange.get("OldValue")} to $${priceChange.get("NewValue")}.<break time="0.5s"/>`;
+            });
            response.say(text);
         })
         .catch((err) => {

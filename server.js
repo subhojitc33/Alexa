@@ -19,7 +19,7 @@ app.post('/', (req, res) => {
         response = alx.response;
 
     if (type === 'LaunchRequest') {
-        response.say("Welcome to Dreamhouse");
+        handlers.StartGame(slots, session, response);
     } else if (type === 'IntentRequest') {
         let handler = handlers[intent];
         if (handler) {

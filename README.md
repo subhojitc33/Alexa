@@ -1,4 +1,4 @@
-## DreamHouse Bot for Alexa
+# DreamHouse Bot for Alexa
 
 ### Step 1: Install the DreamHouse App
 

@@ -55,48 +55,47 @@ If you don't already have an AWS account, follow the steps below to create one:
     - Invocation Name: **dreamhouse**
     
 1. On the **Interaction Model** Screen:    
-
     - Paste the following JSON document in the **Intent Schema** box:
      
-     ```
-     {
-       "intents": [
+         ```
          {
-           "intent": "SearchHouses"
-         },
-         {
-           "intent": "AnswerCity",
-           "slots": [
+           "intents": [
              {
-               "name": "City",
-               "type": "AMAZON.US_CITY"
+               "intent": "SearchHouses"
+             },
+             {
+               "intent": "AnswerCity",
+               "slots": [
+                 {
+                   "name": "City",
+                   "type": "AMAZON.US_CITY"
+                 }
+               ]
+             },
+             {
+               "intent": "AnswerNumber",
+               "slots": [
+                 {
+                   "name": "NumericAnswer",
+                   "type": "AMAZON.NUMBER"
+                 }
+               ]
+             },
+             {
+               "intent": "Changes",
+               "slots": [
+                 {
+                   "name": "City",
+                   "type": "AMAZON.US_CITY"
+                 }
+               ]
+             },
+             {
+               "intent": "AMAZON.HelpIntent"
              }
            ]
-         },
-         {
-           "intent": "AnswerNumber",
-           "slots": [
-             {
-               "name": "NumericAnswer",
-               "type": "AMAZON.NUMBER"
-             }
-           ]
-         },
-         {
-           "intent": "Changes",
-           "slots": [
-             {
-               "name": "City",
-               "type": "AMAZON.US_CITY"
-             }
-           ]
-         },
-         {
-           "intent": "AMAZON.HelpIntent"
          }
-       ]
-     }
-     ```
+         ```
      - Paste the following text in the **Sample Utterances** box:
      
         ```

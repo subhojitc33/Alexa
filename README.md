@@ -11,6 +11,8 @@ If you haven't already done so, follow [these instructions](http://dreamhouse-si
 
 ### Step 2: Create a Connected App
 
+If you haven't already done so, follow the steps below to create a Salesforce connected app:
+
 1. In Salesforce Setup, type **Apps** in the quick find box, and click the **Apps** link
 
 1. In the **Connected Apps** section, click **New**, and define the Connected App as follows:

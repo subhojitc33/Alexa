@@ -97,7 +97,6 @@ If you don't already have an AWS account, follow the steps below to create one:
        ]
      }
      ```
-     
      - Paste the following text in the **Sample Utterances** box:
      
         ```

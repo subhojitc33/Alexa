@@ -56,45 +56,46 @@ If you don't already have an AWS account, follow the steps below to create one:
     
 1. On the **Interaction Model** Screen:    
     - Paste the following JSON document in the **Intent Schema** box:
-         ```
+
+        ```
+        {
+        "intents": [
          {
-           "intents": [
+           "intent": "SearchHouses"
+         },
+         {
+           "intent": "AnswerCity",
+           "slots": [
              {
-               "intent": "SearchHouses"
-             },
-             {
-               "intent": "AnswerCity",
-               "slots": [
-                 {
-                   "name": "City",
-                   "type": "AMAZON.US_CITY"
-                 }
-               ]
-             },
-             {
-               "intent": "AnswerNumber",
-               "slots": [
-                 {
-                   "name": "NumericAnswer",
-                   "type": "AMAZON.NUMBER"
-                 }
-               ]
-             },
-             {
-               "intent": "Changes",
-               "slots": [
-                 {
-                   "name": "City",
-                   "type": "AMAZON.US_CITY"
-                 }
-               ]
-             },
-             {
-               "intent": "AMAZON.HelpIntent"
+               "name": "City",
+               "type": "AMAZON.US_CITY"
              }
            ]
+         },
+         {
+           "intent": "AnswerNumber",
+           "slots": [
+             {
+               "name": "NumericAnswer",
+               "type": "AMAZON.NUMBER"
+             }
+           ]
+         },
+         {
+           "intent": "Changes",
+           "slots": [
+             {
+               "name": "City",
+               "type": "AMAZON.US_CITY"
+             }
+           ]
+         },
+         {
+           "intent": "AMAZON.HelpIntent"
          }
-         ```
+        ]
+        }
+        ```
     - Paste the following text in the **Sample Utterances** box:
      
         ```

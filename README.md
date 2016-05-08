@@ -1,5 +1,10 @@
 # DreamHouse Bot for Alexa
 
+A Salesforce-powered Alexa Skill for the DreamHouse sample application.
+
+Follow the instructions below to create your own instance of the skill:
+
+
 ### Step 1: Install the DreamHouse App
 
 If you haven't already done so, follow [these instructions](http://dreamhouse-site.herokuapp.com/installation/) to install the DreamHouse sample application.

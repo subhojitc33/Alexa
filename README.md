@@ -56,7 +56,6 @@ If you don't already have an AWS account, follow the steps below to create one:
     
 1. On the **Interaction Model** Screen:    
     - Paste the following JSON document in the **Intent Schema** box:
-     
          ```
          {
            "intents": [
@@ -96,7 +95,7 @@ If you don't already have an AWS account, follow the steps below to create one:
            ]
          }
          ```
-     - Paste the following text in the **Sample Utterances** box:
+    - Paste the following text in the **Sample Utterances** box:
      
         ```
         SearchHouses for listings

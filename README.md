@@ -21,7 +21,7 @@ If you haven't already done so, follow the steps below to create a Salesforce co
     - API Name: MyConnectedApp
     - Contact Email: enter your email address
     - Enabled OAuth Settings: Checked
-    - Callback URL: http://localhost:8200/oauthcallback.html (You'll change this later)
+    - Callback URL: http://localhost:8200/oauthcallback.html
     - Selected OAuth Scopes: Full Access (full)
     - Click **Save**
 
@@ -123,6 +123,8 @@ If you don't already have an AWS account, follow the steps below to create one:
      ```
 
 1. On the **SSL certificate** screen, select **My development endpoint is a subdomain of a domain that has a wildcard certificate from a certificate authority**
-  
+
+1. Restart your Alexa device
+
 1. You are now ready to test the DreamHouse skill.  
      
